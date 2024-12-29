@@ -23,19 +23,22 @@ function App() {
     client.models.Todo.delete({ id })
   }
 
+  console.log(todos)
+
   return (
     <main>
-      <div style={{ display: "flex", width: "300px", justifyContent: "space-between" }}>
-        <h1>My todos</h1>
         <div className="">
           <button onClick={signOut}>Log out</button>
         </div>
+      <div style={{ display: "flex", width: "300px", justifyContent: "space-between" }}>
+        <h1>My todos</h1>
       </div>
       <button onClick={createTodo}>+ new</button>
       <ul>
         {todos.map((todo) => (
-          <div key={todo.id} style={{ display: "flex", width: "300px", justifyContent: "space-between" }}>
+          <div key={todo.id} style={{ display: "flex", minWidth: "500px", justifyContent: "space-between", alignItems: "center", gap: '20px' }}>
             <li style={{ flex: 1 }}>{todo.content}</li>
+            <span style={{color: "white", textAlign: "center", display: "block"}}>{todo.isDone ? "Complete" : "Pending"}</span>
             <button onClick={() => deleteTodo(todo.id)}>Delete</button>
           </div>
         ))}
